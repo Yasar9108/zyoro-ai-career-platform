@@ -1,0 +1,437 @@
+/* =======================================================================
+   InterviewPreparation — styles
+   -----------------------------------------------------------------------
+   Design idea: each card LOOKS like the tool it represents.
+     - Face-to-Face  -> a camera viewfinder (corner brackets, live dot)
+     - Live Coding   -> a code editor window (tab bar dots)
+     - Coming Soon   -> a locked, dashed-out panel
+   Palette matches the rest of ZyoroAI: soft off-white background, white
+   cards, and a single indigo brand accent (#5850EC — same as the logo
+   and primary buttons elsewhere) used everywhere: corner brackets, tab
+   dots, tags, live pill, and CTA buttons.
+   Organized top to bottom: tokens -> layout -> header -> cards ->
+   per-variant details -> responsive breakpoints.
+   ======================================================================= */
+
+/* ---------------------- Design tokens ---------------------- */
+.ip-page {
+  --ip-bg: #f7f8fc;
+  --ip-bg-elevated: #ffffff;
+  --ip-bg-card: #ffffff;
+  --ip-border: #e6e8f0;
+  --ip-border-strong: #cfd3e4;
+
+  --ip-text-primary: #10121f;
+  --ip-text-secondary: #5b6478;
+  --ip-text-muted: #9aa1b5;
+
+  /* Brand accent (matches the logo / primary buttons on other pages) */
+  --ip-accent-primary: #5850ec;
+  --ip-accent-primary-soft: rgba(88, 80, 236, 0.08);
+
+  --ip-font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --ip-font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --ip-font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+
+  --ip-radius-lg: 24px;
+  --ip-radius-sm: 12px;
+  --ip-shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04);
+  --ip-shadow-card-hover: 0 12px 24px rgba(16, 24, 40, 0.08);
+  --ip-transition: 200ms ease;
+
+  background: var(--ip-bg);
+  color: var(--ip-text-primary);
+  font-family: var(--ip-font-body);
+  padding: 64px 32px 96px;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  /* Full-bleed fix: if a parent layout (container/max-width wrapper)
+     is centering this section with side padding, break out of it so
+     the background always spans the entire viewport width. */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.ip-page *,
+.ip-page *::before,
+.ip-page *::after {
+  box-sizing: border-box;
+}
+
+/* ---------------------- Header ---------------------- */
+.ip-header {
+  max-width: 720px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.ip-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ip-font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ip-accent-primary);
+  margin-bottom: 16px;
+}
+
+.ip-eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ip-accent-primary);
+}
+
+.ip-title {
+  font-family: var(--ip-font-display);
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.1;
+  font-weight: 700;
+  color: var(--ip-text-primary);
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+
+.ip-subtitle {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ip-text-secondary);
+  margin: 0 auto 28px;
+  max-width: 520px;
+}
+
+.ip-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--ip-border);
+  background: var(--ip-bg-elevated);
+  font-family: var(--ip-font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ip-text-secondary);
+}
+
+.ip-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ip-accent-primary);
+  box-shadow: 0 0 0 0 rgba(88, 80, 236, 0.5);
+  animation: ip-pulse 1.8s ease-out infinite;
+}
+
+@keyframes ip-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(88, 80, 236, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(88, 80, 236, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(88, 80, 236, 0);
+  }
+}
+
+/* ---------------------- Card grid ---------------------- */
+.ip-grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* ---------------------- Card base ---------------------- */
+.ip-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--ip-bg-card);
+  border: 1px solid var(--ip-border);
+  border-radius: var(--ip-radius-lg);
+  padding: 28px 24px 24px;
+  overflow: hidden;
+  box-shadow: var(--ip-shadow-card);
+  transition: border-color var(--ip-transition), transform var(--ip-transition),
+    box-shadow var(--ip-transition);
+}
+
+.ip-card:hover,
+.ip-card.is-active {
+  border-color: var(--ip-border-strong);
+  box-shadow: var(--ip-shadow-card-hover);
+  transform: translateY(-4px);
+}
+
+.ip-card-frame {
+  position: relative;
+  height: 72px;
+  margin-bottom: 20px;
+}
+
+.ip-card-tag {
+  font-family: var(--ip-font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ip-text-muted);
+  margin-bottom: 10px;
+}
+
+.ip-card-title {
+  font-family: var(--ip-font-display);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--ip-text-primary);
+  margin: 0 0 10px;
+}
+
+.ip-card-description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ip-text-secondary);
+  margin: 0 0 18px;
+  flex-grow: 1;
+}
+
+.ip-card-points {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ip-card-points li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 13px;
+  color: var(--ip-text-secondary);
+}
+
+.ip-card-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ip-accent-primary);
+}
+
+.ip-card-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: var(--ip-radius-sm);
+  border: 1px solid transparent;
+  font-family: var(--ip-font-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--ip-accent-primary);
+  color: #ffffff;
+  transition: background var(--ip-transition), transform var(--ip-transition);
+}
+
+.ip-card-cta:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.ip-card-cta:focus-visible {
+  outline: 2px solid var(--ip-accent-primary);
+  outline-offset: 2px;
+}
+
+.ip-card-cta:disabled {
+  cursor: not-allowed;
+  background: var(--ip-accent-primary-soft);
+  border-color: transparent;
+  color: var(--ip-text-muted);
+}
+
+.ip-cta-arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--ip-transition);
+}
+
+.ip-card-cta:hover:not(:disabled) .ip-cta-arrow {
+  transform: translateX(3px);
+}
+
+/* ---------------------- Variant: camera (face-to-face) ---------------------- */
+.ip-card--camera .ip-card-frame {
+  border-radius: var(--ip-radius-sm);
+  background: var(--ip-accent-primary-soft);
+}
+
+.ip-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--ip-accent-primary);
+}
+
+.ip-corner--tl {
+  top: 8px;
+  left: 8px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.ip-corner--tr {
+  top: 8px;
+  right: 8px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.ip-corner--bl {
+  bottom: 8px;
+  left: 8px;
+  border-right: none;
+  border-top: none;
+}
+
+.ip-corner--br {
+  bottom: 8px;
+  right: 8px;
+  border-left: none;
+  border-top: none;
+}
+
+.ip-card--camera .ip-card-tag {
+  color: var(--ip-accent-primary);
+}
+
+/* ---------------------- Variant: editor (live coding) ---------------------- */
+.ip-card--editor .ip-card-frame {
+  border-radius: var(--ip-radius-sm);
+  background: var(--ip-accent-primary-soft);
+  display: flex;
+  align-items: flex-start;
+  padding: 10px 12px;
+}
+
+.ip-tabbar {
+  display: flex;
+  gap: 6px;
+}
+
+.ip-tabdot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--ip-accent-primary);
+  opacity: 0.85;
+}
+
+.ip-tabdot:nth-child(2) {
+  opacity: 0.55;
+}
+
+.ip-tabdot:nth-child(3) {
+  opacity: 0.3;
+}
+
+.ip-card--editor .ip-card-cta {
+  background: var(--ip-accent-primary);
+  color: #ffffff;
+}
+
+.ip-card--editor .ip-card-cta:focus-visible {
+  outline-color: var(--ip-accent-primary);
+}
+
+.ip-card--editor .ip-card-tag {
+  color: var(--ip-accent-primary);
+}
+
+/* ---------------------- Variant: locked (coming soon) ---------------------- */
+.ip-card--locked {
+  background: transparent;
+  border: 1px dashed var(--ip-border-strong);
+  box-shadow: none;
+}
+
+.ip-card--locked:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--ip-border-strong);
+}
+
+.ip-card--locked .ip-card-frame {
+  border-radius: var(--ip-radius-sm);
+}
+
+.ip-lock-outline {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--ip-radius-sm);
+  border: 1px dashed var(--ip-border);
+}
+
+.ip-card--locked .ip-card-description,
+.ip-card--locked .ip-card-tag {
+  color: var(--ip-text-muted);
+}
+
+/* ---------------------- Responsive ---------------------- */
+@media (max-width: 960px) {
+  .ip-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ip-grid .ip-card:last-child {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .ip-page {
+    padding: 48px 18px 72px;
+  }
+
+  .ip-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ip-grid .ip-card:last-child {
+    grid-column: span 1;
+  }
+
+  .ip-header {
+    margin-bottom: 40px;
+  }
+}
+
+/* ---------------------- Reduced motion ---------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .ip-card,
+  .ip-card-cta,
+  .ip-cta-arrow,
+  .ip-live-dot {
+    animation: none !important;
+    transition: none !important;
+  }
+}

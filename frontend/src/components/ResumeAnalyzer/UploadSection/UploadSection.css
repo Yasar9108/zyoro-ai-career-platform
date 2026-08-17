@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap');
+
+.upload-section {
+    --ink: #111827;
+    --muted: #6b7280;
+    --accent: #4338ca;
+    --accent-soft: #eef2ff;
+    --success: #0d9488;
+    --warn: #f59e0b;
+    --line: #e2e8f0;
+
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+}
+
+/* ============================
+   Eyebrow
+============================ */
+
+.upload-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--accent);
+
+    margin-bottom: 16px;
+}
+
+.upload-eyebrow-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+/* ============================
+   Heading override
+============================ */
+
+.upload-section h1 {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.upload-section > p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================
+   Dropzone
+============================ */
+
+.dropzone {
+    border: 2px dashed var(--line);
+    border-radius: 16px;
+    background: #fff;
+
+    padding: 48px 24px;
+    cursor: pointer;
+
+    transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.dropzone:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+}
+
+.dropzone:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.dropzone--active {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    transform: scale(1.01);
+}
+
+.dropzone--filled {
+    border-style: solid;
+    border-color: var(--success);
+}
+
+.dropzone-doc {
+    position: relative;
+    width: 64px;
+    height: 78px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+}
+
+.dropzone-doc-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.doc-page {
+    fill: #fff;
+    stroke: var(--muted);
+    stroke-width: 1.5;
+}
+
+.doc-fold {
+    fill: var(--line);
+    stroke: var(--muted);
+    stroke-width: 1.5;
+}
+
+.doc-line {
+    stroke: var(--line);
+    stroke-width: 2;
+}
+
+.dropzone-scanline {
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    animation: scan 2.6s ease-in-out infinite;
+    opacity: .5;
+}
+
+.dropzone--active .dropzone-scanline {
+    animation-duration: .9s;
+    opacity: .9;
+}
+
+@keyframes scan {
+    0%   { top: 4px;  opacity: 0; }
+    12%  { opacity: .8; }
+    50%  { opacity: .9; }
+    88%  { opacity: .5; }
+    100% { top: 68px; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dropzone-scanline { animation: none; opacity: .4; }
+}
+
+.dropzone-title {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 6px;
+}
+
+.dropzone-title span {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.dropzone-filename {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--success);
+    margin: 0 0 6px;
+    word-break: break-word;
+}
+
+.dropzone-hint {
+    font-size: .85rem;
+    color: var(--muted);
+    margin: 0;
+}
+
+/* ============================
+   Error
+============================ */
+
+.upload-error {
+    color: var(--warn);
+    font-size: .85rem;
+    font-weight: 500;
+    margin: 12px 0 0;
+}
+
+/* ============================
+   Target role field
+============================ */
+
+.target-role-field {
+    max-width: 360px;
+    margin: 24px auto 0;
+    text-align: left;
+}
+
+.target-role-label {
+    display: block;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+}
+
+.target-role-required {
+    color: var(--warn);
+    font-weight: 600;
+}
+
+.target-role-input {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: .95rem;
+    color: var(--ink);
+
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+
+    transition: border-color .2s ease, background .2s ease;
+}
+
+.target-role-input::placeholder {
+    color: var(--muted);
+}
+
+.target-role-input:hover {
+    border-color: #cbd5e1;
+}
+
+.target-role-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: var(--accent-soft);
+}
+
+/* ============================
+   CTA
+============================ */
+
+.cta-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.analyze-btn,
+.generate-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+
+    border-radius: 10px;
+    padding: 14px 32px;
+
+    cursor: pointer;
+    transition: background .2s ease, transform .15s ease, border-color .2s ease;
+}
+
+.analyze-btn {
+    color: #fff;
+    background: var(--accent);
+    border: none;
+}
+
+.analyze-btn:hover:not(:disabled) {
+    background: #372ea8;
+    transform: translateY(-1px);
+}
+
+.analyze-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.analyze-btn:disabled {
+    background: var(--line);
+    color: var(--muted);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.generate-btn {
+    color: var(--accent);
+    background: #fff;
+    border: 1.5px solid var(--accent);
+}
+
+.generate-btn:hover:not(:disabled) {
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+}
+
+.generate-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.generate-btn:disabled {
+    background: #fff;
+    border-color: var(--line);
+    color: var(--muted);
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ============================
+   Capability chips
+============================ */
+
+.upload-checks {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0;
+}
+
+.upload-checks li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: .88rem;
+    color: var(--muted);
+}
+
+.check-icon {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.check-icon--score { background: var(--accent); }
+.check-icon--keyword { background: var(--success); }
+.check-icon--format { background: var(--warn); }
+
+/* ============================
+   Mobile
+============================ */
+
+@media (max-width: 480px) {
+    .dropzone { padding: 36px 16px; }
+    .upload-checks { gap: 16px; }
+    .cta-group { flex-direction: column; }
+    .analyze-btn, .generate-btn { width: 100%; }
+}

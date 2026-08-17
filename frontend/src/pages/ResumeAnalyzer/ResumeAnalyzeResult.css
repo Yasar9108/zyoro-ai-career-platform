@@ -1,0 +1,370 @@
+.resume-result-page {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px 16px 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+/* Header */
+.result-header {
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.result-header h1 {
+    margin: 0 0 4px;
+    font-size: clamp(22px, 5vw, 30px);
+    font-weight: 700;
+    color: #111827;
+}
+
+.result-header p {
+    margin: 0;
+    font-size: clamp(13px, 3.5vw, 15px);
+    color: #6b7280;
+}
+
+/* Score Card */
+.score-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 28px 20px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+}
+
+.score-label {
+    font-size: clamp(13px, 3.5vw, 15px);
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.score-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 8px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.score-value {
+    font-size: clamp(28px, 7vw, 38px);
+    font-weight: 700;
+}
+
+.score-status {
+    font-size: clamp(16px, 4vw, 19px);
+    font-weight: 600;
+}
+
+.score-card--excellent .score-circle,
+.score-card--excellent .score-status {
+    border-color: #16a34a;
+    color: #16a34a;
+}
+
+.score-card--good .score-circle,
+.score-card--good .score-status {
+    border-color: #ca8a04;
+    color: #ca8a04;
+}
+
+.score-card--poor .score-circle,
+.score-card--poor .score-status {
+    border-color: #dc2626;
+    color: #dc2626;
+}
+
+/* Generic section card */
+.result-section {
+    width: 100%;
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+}
+
+.result-section h3 {
+    margin: 0 0 12px;
+    font-size: clamp(15px, 4vw, 18px);
+    color: #111827;
+}
+
+.summary-text {
+    margin: 0;
+    font-size: clamp(14px, 3.5vw, 16px);
+    line-height: 1.6;
+    color: #374151;
+}
+
+/* Tags (Skills / Missing Skills) */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: clamp(12px, 3.2vw, 14px);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.tag--skill {
+    background: #eef2ff;
+    color: #4338ca;
+}
+
+.tag--missing {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+/* Suggestions */
+.suggestions-list {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.suggestions-list li {
+    font-size: clamp(14px, 3.5vw, 16px);
+    line-height: 1.5;
+    color: #333;
+}
+
+/* Actions */
+.resume-result-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.generate-ai-resume-btn {
+    width: 100%;
+    max-width: 340px;
+    padding: 14px 20px;
+    font-size: clamp(15px, 4vw, 17px);
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.generate-ai-resume-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
+}
+
+.generate-ai-resume-btn:active {
+    transform: translateY(0);
+}
+
+/* =========================
+   Top / Back Button
+========================= */
+
+.resume-result-top-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.back-resume-btn {
+    padding: 10px 18px;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    color: #374151;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.back-resume-btn:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+}
+
+
+/* =========================
+   Generated Resume Ready
+========================= */
+
+.generated-resume-actions {
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.resume-ready-message {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 16px 18px;
+
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 12px;
+
+    box-sizing: border-box;
+}
+
+.resume-ready-icon {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #16a34a;
+    color: #ffffff;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.resume-ready-message strong {
+    display: block;
+    color: #166534;
+    font-size: 15px;
+}
+
+.resume-ready-message p {
+    margin: 3px 0 0;
+    color: #4b5563;
+    font-size: 13px;
+}
+
+
+/* =========================
+   View / Download Buttons
+========================= */
+
+.resume-action-buttons {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+}
+
+.view-resume-btn,
+.download-resume-btn {
+    flex: 1;
+
+    padding: 13px 18px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.view-resume-btn {
+    background: #ffffff;
+    color: #6366f1;
+    border: 1px solid #6366f1;
+}
+
+.download-resume-btn {
+    border: none;
+
+    color: #ffffff;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+}
+
+.view-resume-btn:hover,
+.download-resume-btn:hover {
+    transform: translateY(-2px);
+}
+
+.download-resume-btn:hover {
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.3);
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 520px) {
+
+    .resume-action-buttons {
+        flex-direction: column;
+    }
+
+    .view-resume-btn,
+    .download-resume-btn {
+        width: 100%;
+    }
+
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .resume-result-page {
+        padding: 40px 24px 64px;
+        gap: 24px;
+    }
+
+    .score-circle {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+@media (max-width: 360px) {
+    .result-section {
+        padding: 16px 18px;
+    }
+
+    .score-circle {
+        width: 100px;
+        height: 100px;
+        border-width: 6px;
+    }
+}

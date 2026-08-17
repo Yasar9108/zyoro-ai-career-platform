@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap');
+
+/* ===============================
+   Navbar
+================================= */
+
+.navbar{
+    --accent:#4338ca;
+    --accent-dark:#372ea8;
+    --ink:#111827;
+    --line:#e5e7eb;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    padding: 18px 40px;
+
+    background: #ffffff;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 4px 18px rgba(0,0,0,.05);
+}
+
+/* ===============================
+   Logo
+================================= */
+
+.logo{
+    font-family: 'Space Grotesk', sans-serif;
+    text-decoration: none;
+    color: var(--accent);
+    font-size: 26px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: transform .2s ease;
+}
+
+.logo:hover{
+    transform: scale(1.03);
+}
+
+/* ===============================
+   Navigation Menu
+================================= */
+
+.nav-menu{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-menu a{
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 500;
+    transition: color .2s ease;
+}
+
+.nav-menu a:hover{
+    color: var(--accent);
+}
+
+.nav-menu a.active{
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* ===============================
+   Auth Buttons
+================================= */
+
+.auth-links{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: 20px;
+}
+
+.auth-links a{
+    font-family: 'Inter', sans-serif;
+    padding: 10px 22px;
+    border: 1.5px solid var(--accent);
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+/* Login button — outlined */
+.auth-links a:first-child{
+    background: #ffffff;
+    color: var(--accent);
+}
+
+.auth-links a:first-child:hover{
+    background: var(--accent);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(67,56,202,.25);
+}
+
+/* Register button — filled */
+.auth-links a:last-child{
+    background: var(--accent);
+    color: #ffffff;
+}
+
+.auth-links a:last-child:hover{
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(67,56,202,.35);
+}
+
+/* ===============================
+   Hamburger Menu
+================================= */
+
+.menu-icon{
+    display: none;
+    font-size: 26px;
+    color: var(--accent);
+    cursor: pointer;
+    transition: transform .3s ease;
+}
+
+.menu-icon:hover{
+    transform: rotate(90deg);
+}
+
+/* ===============================
+   Laptop
+================================= */
+
+@media (max-width:1200px){
+    .navbar{ padding:18px 24px; }
+    .nav-menu{ gap:20px; }
+    .auth-links{ gap:12px; }
+}
+
+/* ===============================
+   Tablet & Mobile
+================================= */
+
+@media (max-width:768px){
+
+    .menu-icon{ display:block; }
+
+    .nav-menu{
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
+
+        background:#ffffff;
+        flex-direction:column;
+        align-items:center;
+        gap:20px;
+        padding:30px 20px;
+
+        border-bottom:1px solid var(--line);
+        box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+        transform:translateY(-120%);
+        opacity:0;
+        visibility:hidden;
+        transition:all .35s ease;
+    }
+
+    .nav-menu.active{
+        transform:translateY(0);
+        opacity:1;
+        visibility:visible;
+    }
+
+    .auth-links{
+        width:100%;
+        flex-direction:column;
+        align-items:center;
+        gap:16px;
+        margin:0;
+    }
+
+    .auth-links a{
+        width:220px;
+        text-align:center;
+    }
+}
+
+/* ===============================
+   Small Mobile
+================================= */
+
+@media (max-width:480px){
+
+    .navbar{ padding:16px; }
+
+    .logo{ font-size:22px; }
+
+    .menu-icon{ font-size:24px; }
+
+    .nav-menu{ gap:16px; padding:24px 16px; }
+
+    .auth-links{ width:100%; }
+
+    .auth-links a{ width:100%; max-width:250px; }
+}
+
+/* ===============================
+   Large Desktop
+================================= */
+
+@media (min-width:1400px){
+    .navbar{ padding:20px 60px; }
+    .nav-menu{ gap:36px; }
+    .logo{ font-size:30px; }
+}

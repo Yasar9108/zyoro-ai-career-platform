@@ -1,0 +1,459 @@
+/* ===============================
+   Verify OTP Container
+================================= */
+
+.verifyOtp-container{
+    min-height:100vh;
+    width:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+
+    padding:40px;
+
+    background:#f8fafc;
+
+    overflow-x:hidden;
+}
+
+/* ===============================
+   Shared Card Styles
+================================= */
+
+.verifyOtp-left,
+.verifyOtp-right{
+
+    width:100%;
+    max-width:550px;
+    min-height:700px;
+
+    border-radius:24px;
+
+    padding:40px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    position:relative;
+    overflow:hidden;
+
+    animation:fadeUp .6s ease;
+}
+
+/* ===============================
+   Left Card
+================================= */
+
+.verifyOtp-left{
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    color:#fff;
+
+    box-shadow:0 20px 50px rgba(37,99,235,.25);
+}
+
+.verifyOtp-left::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:320px;
+    height:320px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    top:-120px;
+    right:-120px;
+}
+
+.verifyOtp-left h1{
+
+    font-size:clamp(2.5rem,4vw,3.5rem);
+
+    margin-bottom:24px;
+
+    line-height:1.2;
+
+    z-index:1;
+}
+
+.verifyOtp-left p{
+
+    font-size:1.15rem;
+
+    line-height:1.8;
+
+    margin-bottom:45px;
+
+    color:rgba(255,255,255,.9);
+
+    z-index:1;
+}
+
+/* ===============================
+   Feature List
+================================= */
+
+.feature-list{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:22px;
+
+    font-size:1.1rem;
+
+    z-index:1;
+}
+
+.feature-list div{
+
+    transition:.3s;
+}
+
+.feature-list div:hover{
+
+    transform:translateX(8px);
+}
+
+/* ===============================
+   Right Card
+================================= */
+
+.verifyOtp-right{
+
+    background:#fff;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.08);
+
+    align-items:center;
+
+    transition:.3s;
+}
+
+.verifyOtp-right:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 30px 60px rgba(0,0,0,.12);
+}
+
+.verifyOtp-card{
+
+    width:100%;
+    max-width:420px;
+
+    margin:auto;
+}
+
+.verifyOtp-card h2{
+
+    margin-bottom:18px;
+}
+
+.verifyOtp-card p{
+
+    margin-bottom:28px;
+
+    color:#555;
+}
+
+/* ===============================
+   OTP Inputs
+================================= */
+
+.otp-container{
+
+    display:flex;
+    justify-content:center;
+    gap:12px;
+
+    margin-bottom:24px;
+
+    flex-wrap:wrap;
+}
+
+.otp-container input{
+
+    width:55px;
+    height:60px;
+
+    border:2px solid #d1d5db;
+
+    border-radius:12px;
+
+    outline:none;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.otp-container input:focus{
+
+    border-color:#2563eb;
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.15);
+
+    transform:translateY(-2px);
+}
+
+/* ===============================
+   Timer
+================================= */
+
+.otp-timer{
+
+    text-align:center;
+
+    margin-bottom:24px;
+
+    color:#666;
+
+    font-size:15px;
+}
+
+.otp-timer span{
+
+    color:#2563eb;
+
+    font-weight:700;
+}
+
+/* ===============================
+   Button
+================================= */
+
+.verifyOtp-card button{
+
+    width:100%;
+}
+
+/* ===============================
+   Back Link
+================================= */
+
+.back-link{
+
+    margin-top:24px;
+
+    text-align:center;
+}
+
+.back-link a{
+
+    text-decoration:none;
+
+    color:#2563eb;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.back-link a:hover{
+
+    text-decoration:underline;
+}
+
+/* ===============================
+   Animation
+================================= */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+    }
+}
+
+/* ===============================
+   Laptop
+================================= */
+
+@media(max-width:1200px){
+
+    .verifyOtp-container{
+
+        padding:30px;
+
+        gap:24px;
+    }
+
+    .verifyOtp-left,
+    .verifyOtp-right{
+
+        max-width:500px;
+
+        min-height:650px;
+    }
+
+}
+
+/* ===============================
+   Tablet
+================================= */
+
+@media(max-width:992px){
+
+    .verifyOtp-container{
+
+        flex-direction:column;
+
+        padding:30px;
+    }
+
+    .verifyOtp-left,
+    .verifyOtp-right{
+
+        max-width:650px;
+
+        min-height:auto;
+    }
+
+}
+
+/* ===============================
+   Mobile
+================================= */
+
+@media(max-width:768px){
+
+    .verifyOtp-container{
+
+        padding:16px;
+    }
+
+    .verifyOtp-left,
+    .verifyOtp-right{
+
+        padding:35px 25px;
+
+        min-height:auto;
+    }
+
+    .verifyOtp-left{
+
+        text-align:center;
+
+        align-items:center;
+    }
+
+    .feature-list{
+
+        align-items:center;
+    }
+
+}
+
+/* ===============================
+   Small Mobile
+================================= */
+
+@media(max-width:480px){
+
+    .verifyOtp-container{
+
+        padding:12px;
+    }
+
+    .verifyOtp-left,
+    .verifyOtp-right{
+
+        padding:24px 18px;
+
+        border-radius:18px;
+    }
+
+    .verifyOtp-left::before{
+
+        width:220px;
+        height:220px;
+
+        top:-80px;
+        right:-80px;
+    }
+
+    .verifyOtp-left h1{
+
+        font-size:1.8rem;
+    }
+
+    .verifyOtp-left p{
+
+        font-size:.95rem;
+
+        line-height:1.6;
+    }
+
+    .feature-list{
+
+        font-size:.95rem;
+
+        gap:16px;
+    }
+
+    .verifyOtp-card h2{
+
+        font-size:1.6rem;
+    }
+
+    .verifyOtp-card p{
+
+        font-size:.95rem;
+    }
+
+    .otp-container{
+
+        gap:8px;
+    }
+
+    .otp-container input{
+
+        width:42px;
+        height:48px;
+
+        font-size:20px;
+    }
+
+}
+
+/* ===============================
+   Large Desktop
+================================= */
+
+@media(min-width:1400px){
+
+    .verifyOtp-container{
+
+        gap:60px;
+    }
+
+    .verifyOtp-left,
+    .verifyOtp-right{
+
+        max-width:600px;
+    }
+
+}

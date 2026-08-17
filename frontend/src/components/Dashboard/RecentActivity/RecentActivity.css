@@ -1,0 +1,177 @@
+/* ===========================
+   RECENT ACTIVITY
+=========================== */
+
+.recent-activity {
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 18px;
+
+    padding: 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+    height: 100%;
+}
+
+/* Header */
+
+.activity-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.activity-header h2 {
+
+    font-size: 22px;
+
+    color: #111827;
+}
+
+.activity-header button {
+
+    border: none;
+
+    background: transparent;
+
+    color: #2563eb;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+/* Activity List */
+
+.activity-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.activity-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding-bottom: 16px;
+
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.activity-item:last-child {
+
+    border-bottom: none;
+
+    padding-bottom: 0;
+}
+
+.activity-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 12px;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+
+    flex-shrink: 0;
+}
+
+.activity-content {
+
+    flex: 1;
+}
+
+.activity-content h4 {
+
+    color: #111827;
+
+    margin-bottom: 4px;
+
+    font-size: 16px;
+}
+
+.activity-content p {
+
+    color: #6b7280;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+.activity-item span {
+
+    color: #9ca3af;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+}
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media (max-width:1023px){
+
+    .recent-activity{
+
+        padding:20px;
+    }
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:767px){
+
+    .recent-activity{
+
+        padding:16px;
+    }
+
+    .activity-item{
+
+        flex-wrap:wrap;
+    }
+
+    .activity-item span{
+
+        width:100%;
+
+        margin-left:64px;
+    }
+
+}

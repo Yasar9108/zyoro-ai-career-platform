@@ -1,0 +1,826 @@
+/* ============================================================
+   DESIGN TOKENS
+   Centralizing these makes future theme/spacing tweaks a
+   one-line change instead of a find-and-replace across the file.
+============================================================ */
+
+.interview-room {
+  --color-bg: #f7f8fc;
+  --color-text: #171923;
+  --color-text-soft: #454751;
+  --color-text-muted: #858792;
+
+  --color-border: #e1e2e9;
+  --color-border-soft: #e2e3ea;
+
+  --color-surface: #ffffff;
+  --color-surface-soft: #fafafd;
+
+  --color-primary: #5b5dd8;
+  --color-primary-soft: #6567d8;
+  --color-primary-bg: #f1f1ff;
+  --color-primary-bg-strong: #eeeeff;
+  --color-primary-bg-hover: #e4e4ff;
+
+  --color-success: #55bf84;
+  --color-success-soft: #5bd18b;
+  --color-success-bg: rgba(106, 220, 156, 0.13);
+  --color-success-text: #86e2ad;
+
+  --color-danger: #bc4949;
+  --color-danger-strong: #e05252;
+  --color-danger-bg: #fff7f7;
+  --color-danger-bg-hover: #fff0f0;
+  --color-danger-border: #efcccc;
+  --color-danger-border-hover: #e9b5b5;
+
+  --color-dark: #171923;
+  --color-dark-soft: #222536;
+  --color-dark-overlay: rgba(20, 22, 30, 0.78);
+
+  --radius-sm: 8px;
+  --radius-md: 13px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+
+  --shadow-card: 0 12px 35px rgba(27, 31, 52, 0.07);
+  --shadow-panel: 0 8px 28px rgba(27, 31, 52, 0.05);
+
+  --transition-fast: 0.2s ease;
+
+  /* Fluid spacing/type scales collapse most of what used to be
+     one-off values per breakpoint. */
+  --space-page-x: clamp(12px, 3vw, 32px);
+  --space-page-y-bottom: clamp(30px, 6vw, 60px);
+  --gap-grid: clamp(12px, 2vw, 18px);
+
+  --font-heading: clamp(13px, 1.4vw, 18px);
+  --font-question: clamp(14px, 1.6vw, 19px);
+
+  width: 100%;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(91, 92, 246, 0.08),
+      transparent 30%
+    ),
+    var(--color-bg);
+
+  color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interview-room * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.interview-room-header {
+  width: 100%;
+  min-height: clamp(58px, 8vw, 76px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  gap: clamp(8px, 2vw, 20px);
+
+  padding: clamp(10px, 2vw, 14px) var(--space-page-x);
+
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--color-border-soft);
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  backdrop-filter: blur(12px);
+}
+
+.interview-room-header > div:first-child {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(5px, 1.2vw, 18px);
+  min-width: 0;
+}
+
+.interview-room-header h2 {
+  margin: 0;
+  color: #1a1c25;
+  font-size: var(--font-heading);
+  font-weight: 750;
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   LIVE STATUS
+============================================================ */
+
+.live-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: clamp(4px, 1vw, 7px) clamp(8px, 1.4vw, 11px);
+
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+
+  background: var(--color-surface-soft);
+  color: #676a75;
+
+  font-size: clamp(9px, 1vw, 11px);
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.live-status > span {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background: var(--color-success);
+
+  box-shadow: 0 0 0 4px rgba(85, 191, 132, 0.13);
+}
+
+/* Hide the badge, not the whole status, once space is truly tight
+   — keeps the "live" indicator legible via the dot alone is lost
+   otherwise, so we only drop the label at the smallest sizes. */
+@media (max-width: 380px) {
+  .live-status span:last-child,
+  .live-status {
+    font-size: 0;
+    gap: 0;
+    padding: 6px;
+  }
+
+  .live-status > span:first-child {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+
+/* ============================================================
+   HEADER ACTIONS
+============================================================ */
+
+.room-header-actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(7px, 1.2vw, 12px);
+}
+
+.interview-timer {
+  min-width: clamp(53px, 8vw, 76px);
+  height: clamp(35px, 5vw, 40px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 clamp(8px, 1.4vw, 13px);
+
+  border: 1px solid var(--color-border);
+  border-radius: 9px;
+
+  background: var(--color-surface-soft);
+  color: #363843;
+
+  font-size: clamp(11px, 1.4vw, 14px);
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.interview-timer.warning {
+  border-color: var(--color-danger-border-hover);
+  color: var(--color-danger);
+  background: var(--color-danger-bg);
+}
+
+.end-interview-btn {
+  height: clamp(35px, 5vw, 40px);
+
+  padding: 0 clamp(10px, 1.6vw, 16px);
+
+  border: 1px solid var(--color-danger-border);
+  border-radius: 9px;
+
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+
+  font-size: clamp(10px, 1.1vw, 12px);
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.end-interview-btn:hover:not(:disabled) {
+  background: var(--color-danger-bg-hover);
+  border-color: var(--color-danger-border-hover);
+  transform: translateY(-1px);
+}
+
+.end-interview-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+}
+
+
+/* ============================================================
+   FOCUS STATES (accessibility — keyboard users need a visible
+   ring on every interactive element)
+============================================================ */
+
+.end-interview-btn:focus-visible,
+.microphone-button:focus-visible,
+.end-confirm-cancel:focus-visible,
+.end-confirm-proceed:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+
+/* ============================================================
+   END CONFIRMATION POPUP
+============================================================ */
+
+.end-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(17, 19, 28, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+.end-confirm-popup {
+  width: 100%;
+  max-width: 400px;
+
+  padding: clamp(20px, 3vw, 26px);
+
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+
+  box-shadow: 0 25px 60px rgba(15, 17, 30, 0.25);
+}
+
+.end-confirm-popup h3 {
+  margin: 0 0 10px;
+  color: var(--color-text);
+  font-size: clamp(15px, 2vw, 17px);
+  font-weight: 750;
+}
+
+.end-confirm-popup p {
+  margin: 0 0 20px;
+  color: var(--color-text-soft);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.end-confirm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.end-confirm-cancel,
+.end-confirm-proceed {
+  height: 40px;
+  padding: 0 16px;
+
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.end-confirm-cancel {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-soft);
+  color: var(--color-text-soft);
+}
+
+.end-confirm-cancel:hover {
+  background: #f0f1f5;
+}
+
+.end-confirm-proceed {
+  border: 1px solid var(--color-danger-border);
+  background: var(--color-danger);
+  color: #ffffff;
+}
+
+.end-confirm-proceed:hover {
+  background: #a83e3e;
+  transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   MAIN CONTENT
+============================================================ */
+
+.interview-room-content {
+  width: 100%;
+  max-width: 1280px;
+
+  margin: 0 auto;
+
+  padding: clamp(14px, 3vw, 28px) var(--space-page-x) var(--space-page-y-bottom);
+}
+
+@media (min-width: 1500px) {
+  .interview-room-content {
+    max-width: 1400px;
+  }
+}
+
+
+/* ============================================================
+   VIDEO GRID
+============================================================ */
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-grid);
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Landscape phones are wide but very short — two narrow columns
+   read better than one tall stacked column that pushes content
+   off screen. */
+@media (max-height: 500px) and (orientation: landscape) {
+  .video-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ============================================================
+   PARTICIPANT CARD
+============================================================ */
+
+.participant-card {
+  position: relative;
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+  min-height: clamp(185px, 32vw, 360px);
+
+  overflow: hidden;
+
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-xl);
+
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+@media (max-width: 600px) {
+  .participant-card {
+    border-radius: var(--radius-md);
+  }
+}
+
+.participant-label {
+  position: absolute;
+  top: clamp(10px, 1.5vw, 14px);
+  left: clamp(10px, 1.5vw, 14px);
+  z-index: 10;
+
+  padding: clamp(5px, 1vw, 7px) clamp(8px, 1.2vw, 11px);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+
+  background: rgba(22, 24, 33, 0.75);
+  color: #ffffff;
+
+  font-size: clamp(9px, 1vw, 11px);
+  font-weight: 650;
+
+  backdrop-filter: blur(8px);
+}
+
+
+/* ============================================================
+   AI INTERVIEWER
+============================================================ */
+
+.ai-interviewer {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: clamp(20px, 3vw, 30px);
+
+  background:
+    radial-gradient(circle at center, rgba(98, 100, 225, 0.12), transparent 45%),
+    linear-gradient(145deg, var(--color-dark), var(--color-dark-soft));
+
+  text-align: center;
+}
+
+.ai-avatar {
+  width: clamp(60px, 9vw, 105px);
+  height: clamp(60px, 9vw, 105px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+
+  background: linear-gradient(145deg, #7476ef, #5557d9);
+  color: #ffffff;
+
+  font-size: clamp(18px, 3vw, 28px);
+  font-weight: 800;
+
+  box-shadow:
+    0 0 0 10px rgba(105, 107, 225, 0.08),
+    0 15px 40px rgba(0, 0, 0, 0.25);
+
+  margin-bottom: clamp(12px, 2vw, 20px);
+}
+
+.ai-interviewer h3 {
+  margin: 0 0 10px;
+  color: #ffffff;
+  font-size: clamp(15px, 2vw, 20px);
+  font-weight: 650;
+}
+
+.speaking-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 29px;
+
+  padding: 6px 12px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: #b9bdc9;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.speaking-status.active {
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
+}
+
+
+/* ============================================================
+   CANDIDATE VIDEO
+============================================================ */
+
+.candidate-video {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+
+  overflow: hidden;
+  background: #1b1d26;
+}
+
+.candidate-video video {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+.camera-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  color: #9da0ac;
+  font-size: 13px;
+  text-align: center;
+}
+
+
+/* ============================================================
+   QUESTION PANEL
+============================================================ */
+
+.question-panel {
+  width: 100%;
+  margin-top: clamp(10px, 1.5vw, 18px);
+
+  padding: clamp(15px, 2.5vw, 24px) clamp(13px, 2.5vw, 26px);
+
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+
+  background: var(--color-surface);
+  box-shadow: var(--shadow-panel);
+}
+
+@media (max-width: 600px) {
+  .question-panel {
+    border-radius: var(--radius-md);
+  }
+}
+
+.question-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  gap: 10px;
+  margin-bottom: clamp(10px, 1.5vw, 14px);
+}
+
+.question-heading > span:first-child {
+  color: var(--color-primary-soft);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.question-difficulty {
+  padding: 5px 10px;
+  border-radius: 7px;
+
+  background: var(--color-primary-bg);
+  color: var(--color-primary);
+
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.question-text {
+  margin: 0;
+  color: #252731;
+
+  font-size: var(--font-question);
+  font-weight: 550;
+  line-height: 1.65;
+}
+
+
+/* ============================================================
+   ANSWER / MICROPHONE PANEL
+============================================================ */
+
+.answer-panel {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1.5vw, 15px);
+
+  margin-top: clamp(8px, 1.2vw, 14px);
+  padding: clamp(12px, 2vw, 17px) clamp(14px, 2.5vw, 20px);
+
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-md);
+
+  background: var(--color-surface);
+}
+
+.microphone-button {
+  width: clamp(43px, 6vw, 48px);
+  height: clamp(43px, 6vw, 48px);
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: var(--color-primary-bg-strong);
+  font-size: clamp(16px, 2vw, 19px);
+
+  cursor: pointer;
+
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.microphone-button:hover:not(:disabled) {
+  transform: scale(1.04);
+  background: var(--color-primary-bg-hover);
+}
+
+.microphone-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.microphone-button.listening {
+  background: var(--color-danger-bg-hover);
+  box-shadow: 0 0 0 7px rgba(224, 82, 82, 0.09);
+  animation: microphonePulse 1.5s infinite;
+}
+
+@keyframes microphonePulse {
+  0% {
+    box-shadow: 0 0 0 4px rgba(224, 82, 82, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(224, 82, 82, 0.04);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba(224, 82, 82, 0.08);
+  }
+}
+
+.answer-status {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.answer-status strong {
+  color: #30323c;
+  font-size: clamp(12px, 1.4vw, 13px);
+  font-weight: 700;
+}
+
+.answer-status span {
+  color: var(--color-text-muted);
+  font-size: clamp(10px, 1.1vw, 11px);
+  line-height: 1.5;
+}
+
+/* At the narrowest widths the helper copy just wraps awkwardly
+   and competes with the mic button — drop it, keep the status. */
+@media (max-width: 380px) {
+  .answer-status span {
+    display: none;
+  }
+}
+
+
+/* ============================================================
+   TRANSCRIPT
+============================================================ */
+
+.transcript-box {
+  width: 100%;
+  margin-top: clamp(8px, 1.2vw, 14px);
+
+  padding: clamp(13px, 2vw, 18px) clamp(14px, 2vw, 20px);
+
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-md);
+
+  background: var(--color-surface-soft);
+}
+
+.transcript-box > span {
+  display: block;
+  margin-bottom: 8px;
+
+  color: var(--color-primary-soft);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.transcript-box p {
+  margin: 0;
+  color: var(--color-text-soft);
+
+  font-size: 13px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   FACE DETECTION OVERLAYS
+============================================================ */
+
+.face-status,
+.gaze-status {
+  position: absolute;
+  bottom: clamp(8px, 1.5vw, 12px);
+  z-index: 10;
+
+  padding: clamp(5px, 1vw, 7px) clamp(8px, 1.2vw, 10px);
+  border-radius: var(--radius-sm);
+
+  background: var(--color-dark-overlay);
+  color: #ffffff;
+
+  font-size: clamp(9px, 1vw, 10px);
+  font-weight: 600;
+
+  backdrop-filter: blur(8px);
+  max-width: calc(50% - 18px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.face-status {
+  right: clamp(8px, 1.5vw, 12px);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.gaze-status {
+  left: clamp(8px, 1.5vw, 12px);
+}
+
+.face-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background: var(--color-danger-strong);
+}
+
+.face-dot.detected {
+  background: var(--color-success-soft);
+}
+
+
+/* ============================================================
+   MOBILE HEADER LAYOUT
+   (structural change — stacking, not just sizing — so it stays
+   a discrete breakpoint rather than a fluid value)
+============================================================ */
+
+@media (max-width: 600px) {
+  .interview-room-header > div:first-child {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

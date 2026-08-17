@@ -1,0 +1,159 @@
+/* Sidebar.css */
+
+.sidebar {
+    width: 260px;
+    height: calc(100vh - 70px);
+    background: #fff;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    transition: all 0.3s ease;
+    overflow-x: hidden;
+}
+
+.sidebar-logo {
+    margin-bottom: 40px;
+}
+
+.sidebar-logo h2 {
+    color: #2563eb;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.sidebar-logo p {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.sidebar-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-link,
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #374151;
+    transition: all .25s ease;
+    font-size: 15px;
+}
+
+.sidebar-link:hover,
+.logout-btn:hover {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.sidebar-link.active {
+    background: #dbeafe;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.sidebar-icon {
+    font-size: 18px;
+    min-width: 20px;
+}
+
+.sidebar-footer {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.logout-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #ef4444;
+}
+
+.logout-btn:hover {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+/* ========================= */
+/* Tablet */
+/* ========================= */
+
+@media (max-width:1023px) {
+
+    .sidebar {
+        width: 80px;
+        padding: 16px 10px;
+        align-items: center;
+    }
+
+    .sidebar-logo p,
+    .sidebar-link span,
+    .logout-btn span {
+        display: none;
+    }
+
+    .sidebar-logo h2 {
+        font-size: 18px;
+    }
+
+    .sidebar-link,
+    .logout-btn {
+        justify-content: center;
+        padding: 14px;
+        width: 100%;
+    }
+
+    .sidebar-icon {
+        margin: 0;
+        font-size: 20px;
+    }
+
+}
+
+/* ========================= */
+/* Mobile */
+/* ========================= */
+
+@media (max-width:767px) {
+
+    .sidebar {
+        position: fixed;
+        top: 70px;
+        left: -260px;
+        width: 260px;
+        height: calc(100vh - 70px);
+        z-index: 999;
+        transition: left .3s ease;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .sidebar-logo p,
+    .sidebar-link span,
+    .logout-btn span {
+        display: block;
+    }
+
+    .sidebar-logo h2 {
+        font-size: 22px;
+    }
+
+    .sidebar-link,
+    .logout-btn {
+        justify-content: flex-start;
+    }
+
+}

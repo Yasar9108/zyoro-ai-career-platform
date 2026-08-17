@@ -1,0 +1,85 @@
+.subscription-card{
+
+    background:#ffffff;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:18px;
+
+    padding:24px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    height:100%;
+}
+
+.subscription-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+.subscription-icon{
+
+    font-size:24px;
+
+    color:#f59e0b;
+}
+
+.subscription-header h3{
+
+    font-size:20px;
+
+    color:#111827;
+}
+
+.subscription-body h2{
+
+    color:#2563eb;
+
+    margin-bottom:10px;
+}
+
+.subscription-body p{
+
+    color:#6b7280;
+
+    line-height:1.6;
+
+    font-size:14px;
+}
+
+.upgrade-btn{
+
+    margin-top:auto;
+
+    width:100%;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.upgrade-btn:hover{
+
+    background:#1d4ed8;
+}
